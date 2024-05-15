@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import "./App.css";
-import Cart from "./Client/Components/Cart/Cart";
+// import Cart from "./Client/Components/Cart/Cart";
+import Checkout from "./Client/Components/Checkout/Checkout";
 import Footer from "./Client/Components/Footer/Footer";
 import Navigation from "./Client/Components/Navigation/Navigation";
 // import Product from "./Client/Components/Product/Product";
@@ -15,7 +16,8 @@ function App() {
         {/* <HomePage /> */}
         {/* <Product/> */}
         {/* <ProductDetails/> */}
-        <Cart />
+        {/* <Cart /> */}
+        <Checkout/>
       </div>
       <Footer />
     </div>
