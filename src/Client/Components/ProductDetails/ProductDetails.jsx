@@ -162,7 +162,7 @@ export default function ProductDetails() {
                 {/* Colors */}
 
                 {/* Sizes */}
-                <div className="mt-10">
+                <div className="mt-10 mb-5">
                   <div className="flex items-center justify-between">
                     <h3 className="text-sm font-medium text-gray-900">Size</h3>
                   </div>
