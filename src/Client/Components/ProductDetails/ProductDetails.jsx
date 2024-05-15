@@ -2,6 +2,8 @@ import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
 import ProductReviewCard from "./ProductReviewCard";
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
+import { mens_kurta } from "../../../Data/Mens_Kurta";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -368,7 +370,12 @@ export default function ProductDetails() {
 
         {/* Similar Products */}
         <section className="pt-10">
-          <h1>Similar Products</h1>
+          <h1 className="py-5 text-xl font-bold">Similar Products</h1>
+          <div className="flex flex-wrap space-y-5">
+            {mens_kurta.map((item) => (
+              <HomeSectionCard product={item} />
+            ))}
+          </div>
         </section>
       </div>
     </div>
