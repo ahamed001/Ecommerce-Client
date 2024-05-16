@@ -3,8 +3,19 @@ import React from "react";
 import AddressCard from "../AddressCard/AddressCard";
 
 const DeliveryAddressForm = () => {
-  const handleSubmit = () => {
-    console.log("address");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const data = new FormData(e.currentTarget);
+    const address = {
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+      address: data.get("address"),
+      city: data.get("city"),
+      state: data.get("state"),
+      zipCode: data.get("zip"),
+      mobile: data.get("phoneNumber"),
+    };
+    console.log("address", address);
   };
 
   return (
