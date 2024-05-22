@@ -17,7 +17,7 @@ const OrderSummary = () => {
             ))}
           </div>
           <div className="px-5 sticky top-0 h-[100vh] mt-5 lg:mt-0">
-            <div className="border">
+            <div className="border px-10 py-8">
               <p className="uppercase font-bold opacity-60 pb-4">
                 Price Details
               </p>

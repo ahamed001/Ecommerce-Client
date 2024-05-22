@@ -13,7 +13,7 @@ const OrderDetails = () => {
         <AddressCard />
       </div>
       <div className="py-20">
-        <OrderTracker activeStep={3} />
+        <OrderTracker activeStep={4} />
       </div>
       <Grid className="space-x-5" container>
         {[1, 1, 1, 1, 1].map((item) => (

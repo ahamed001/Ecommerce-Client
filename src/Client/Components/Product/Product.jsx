@@ -113,10 +113,10 @@ export default function Product() {
     const query = searchParams.toString();
     navigate({ search: `?${query}` });
   };
-  
+
   const handleRadioFilter = (e, sectionId) => {
     const searchParams = new URLSearchParams(location.search);
-    
+
     searchParams.set(sectionId, e.target.value);
     const query = searchParams.toString();
     navigate({ search: `?${query}` });
