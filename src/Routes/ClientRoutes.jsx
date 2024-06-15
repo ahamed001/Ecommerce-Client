@@ -10,13 +10,15 @@ import Checkout from "../Client/Components/Checkout/Checkout";
 import OrderDetails from "../Client/Components/Order/OrderDetails";
 import Order from "../Client/Components/Order/Order";
 
-const CustomerRoutes = () => {
+const ClientRoutes = () => {
   return (
     <div>
       <div>
         <Navigation />
       </div>
       <Routes>
+        <Route path="/login" element={<HomePage />}></Route>
+        <Route path="/register" element={<HomePage />}></Route>
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/cart" element={<Cart />}></Route>
         <Route path="/:levelOne/:levelTwo/:levelThree" element={<Product />}></Route>
@@ -32,4 +34,4 @@ const CustomerRoutes = () => {
   );
 };
 
-export default CustomerRoutes;
+export default ClientRoutes;

@@ -1,13 +1,13 @@
 // import logo from './logo.svg';
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import CustomerRoutes from "./Routes/CustomerRoutes";
+import ClientRoutes from "./Routes/ClientRoutes";
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/*" element={<CustomerRoutes />}></Route>
+        <Route path="/*" element={<ClientRoutes />}></Route>
       </Routes>
     </div>
   );

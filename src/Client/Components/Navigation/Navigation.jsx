@@ -10,6 +10,7 @@ import {
 import { Avatar, Button, Menu, MenuItem } from "@mui/material";
 import { navigation } from "./NavigationData";
 import { useNavigate } from "react-router-dom";
+import AuthModal from "../../Auth/AuthModal";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -370,52 +371,47 @@ export default function Navigation() {
 
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                  <div>
-                    <Avatar
-                      className="text-white"
-                      onClick={handleUserClick}
-                      aria-controls={open ? "basic-menu" : undefined}
-                      aria-haspopup="true"
-                      aria-expanded={open ? "true" : undefined}
-                      // onClick={handleUserClick}
-                      sx={{
-                        bgcolor: "black",
-                        color: "white",
-                        cursor: "pointer",
-                      }}
-                    ></Avatar>
-                    {/* <Button
-                        id="basic-button"
+                  {false ? (
+                    <div>
+                      <Avatar
+                        className="text-white"
+                        onClick={handleUserClick}
                         aria-controls={open ? "basic-menu" : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? "true" : undefined}
-                        onClick={handleUserClick}
+                        // onClick={handleUserClick}
+                        sx={{
+                          bgcolor: "black",
+                          color: "white",
+                          cursor: "pointer",
+                        }}
+                      ></Avatar>
+                      <Menu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openUserMenu}
+                        onClose={handleCloseUserMenu}
+                        MenuListProps={{
+                          "aria-labelledby": "basic-button",
+                        }}
                       >
-                        Dashboard
-                      </Button> */}
-                    <Menu
-                      id="basic-menu"
-                      anchorEl={anchorEl}
-                      open={openUserMenu}
-                      onClose={handleCloseUserMenu}
-                      MenuListProps={{
-                        "aria-labelledby": "basic-button",
-                      }}
+                        <MenuItem onClick={handleCloseUserMenu}>
+                          Profile
+                        </MenuItem>
+                        <MenuItem onClick={() => navigate("/account/orders")}>
+                          My Orders
+                        </MenuItem>
+                        <MenuItem>Logout</MenuItem>
+                      </Menu>
+                    </div>
+                  ) : (
+                    <Button
+                      onClick={handleOpen}
+                      className="text-sm font-medium text-gray-700 hover:text-gray-800"
                     >
-                      <MenuItem onClick={handleCloseUserMenu}>Profile</MenuItem>
-                      <MenuItem onClick={() => navigate("/account/orders")}>
-                        My Orders
-                      </MenuItem>
-                      <MenuItem>Logout</MenuItem>
-                    </Menu>
-                  </div>
-
-                  <Button
-                    onClick={handleOpen}
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                  >
-                    Signin
-                  </Button>
+                      Signin
+                    </Button>
+                  )}
                 </div>
 
                 {/* Search */}
@@ -446,7 +442,7 @@ export default function Navigation() {
           </div>
         </nav>
       </header>
-      {/* <AuthModal handleClose={handleClose} open={openAuthModal} /> */}
+      <AuthModal handleClose={handleClose} open={openAuthModal} />
     </div>
   );
 }
