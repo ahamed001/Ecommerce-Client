@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
 import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
-import ProductReviewCard from "./ProductReviewCard";
-import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
-import { mens_kurta } from "../../../Data/Mens_Kurta";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { mens_kurta } from "../../../Data/Mens_Kurta";
+import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
+import ProductReviewCard from "./ProductReviewCard";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -64,16 +64,16 @@ function classNames(...classes) {
 export default function ProductDetails() {
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
   const navigate = useNavigate();
-  // const params = useParams();
-  // const dispatch = useDispatch();
+  const params = useParams();
+  const dispatch = useDispatch();
 
   const handleAddToCart = () => {
     navigate("/cart");
   };
 
-  // useEffect(() => {
+  useEffect(() => {
 
-  // }, [params.productId]);
+  }, [params.productId]);
 
   return (
     <div className="bg-white lg:px-20">
