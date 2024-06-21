@@ -506,8 +506,8 @@ export default function Product() {
               <div className="lg:col-span-3 w-full">
                 <div className="flex flex-wrap justify-center bg-white py-5">
                   {products.products &&
-                    products.products?.content?.map((item, index) => (
-                      <ProductCard key={index} product={item} />
+                    products.products?.content?.map((item) => (
+                      <ProductCard key={item.id} product={item} />
                     ))}
                 </div>
               </div>

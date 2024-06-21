@@ -1,11 +1,12 @@
 import { RadioGroup } from "@headlessui/react";
 import { Box, Button, Grid, LinearProgress, Rating } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { mens_kurta } from "../../../Data/Mens_Kurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import ProductReviewCard from "./ProductReviewCard";
+import { findProductsById } from "../../../State/Product/Action";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -55,24 +56,27 @@ const product = {
   details:
     'The 6-Pack includes two black, two white, and two heather gray Basic Tees. Sign up for our subscription service and be the first to get new, exciting colors, like our upcoming "Charcoal Gray" limited release.',
 };
-const reviews = { href: "#", average: 4, totalCount: 117 };
+// const reviews = { href: "#", average: 4, totalCount: 117 };
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function ProductDetails() {
-  const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
+  const [selectedSize, setSelectedSize] = useState("");
   const navigate = useNavigate();
   const params = useParams();
   const dispatch = useDispatch();
+  const { products } = useSelector((store) => store);
 
+  console.log("Params ", params.productId);
   const handleAddToCart = () => {
     navigate("/cart");
   };
 
   useEffect(() => {
-
+    const data = { productId: params.productId };
+    dispatch(findProductsById(data));
   }, [params.productId]);
 
   return (
@@ -122,8 +126,8 @@ export default function ProductDetails() {
           <div className="flex flex-col items-center">
             <div className="overflow-hidden rounded-lg max-w-[30rem] max-h-[35rem]">
               <img
-                src={product.images[0].src}
-                alt={product.images[0].alt}
+                src={products.product?.imageUrl}
+                alt={products.product?.title}
                 className="h-full w-full object-cover object-center"
               />
             </div>
@@ -144,10 +148,10 @@ export default function ProductDetails() {
           <div className="lg:col-span-1 max-w-2xl px-4 pb-16 sm:px-6 lg:max-w-7xl lg:px-8 lg:pb-24">
             <div className="lg:col-span-2">
               <h1 className="text-lg lg:tex font-semibold text-gray-900">
-                lol
+                {products.product?.brand}
               </h1>
               <h1 className="text-lg lg:tex font-semibold text-gray-900 opacity-60 pt-1">
-                lmao
+                {products.product?.title}
               </h1>
             </div>
 
@@ -155,9 +159,9 @@ export default function ProductDetails() {
             <div className="mt-4 lg:row-span-3 lg:mt-0">
               <h2 className="sr-only">Product information</h2>
               <div className="flex space-x-5 items-center text-lg lg:text-xl text-gray-900 mt-6">
-                <p className="font-semibold">₹199</p>
-                <p className="opacity-50 line-through">₹250</p>
-                <p className=" text-green-600 font-semibold">5% Off</p>
+                <p className="font-semibold">{products.product?.discountPrice}</p>
+                <p className="opacity-50 line-through">{products.product?.price}</p>
+                <p className=" text-green-600 font-semibold">{products.product?.discountPercent}% Off</p>
               </div>
 
               {/* Reviews */}
