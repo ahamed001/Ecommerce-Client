@@ -12,28 +12,20 @@ export const createOrder = (reqData) => async (dispatch) => {
   dispatch({ type: CREATE_ORDER_REQUEST });
 
   try {
-    const { data } = await api.post(`/api/orders`, reqData.address);
+    const { data } = await api.post(`/api/orders/`, reqData.address);
     if (data.id) {
       reqData.navigate({ search: `step=3&order_id=${data.id}` });
     }
-    console.log("catch error : ", error);
-    dispatch({
-      type: CREATE_ORDER_SUCCESS,
-      payload: data,
-    });
+    dispatch({ type: CREATE_ORDER_SUCCESS, payload: data });
   } catch (error) {
-    console.log("catch error : ", error);
-    dispatch({
-      type: CREATE_ORDER_FAILURE,
-      payload: error.message,
-    });
+    dispatch({ type: CREATE_ORDER_FAILURE, payload: error.message });
   }
 };
 
 export const getOrderById = (orderId) => async (dispatch) => {
-  try {
-    dispatch({ type: GET_ORDER_BY_ID_REQUEST });
+  dispatch({ type: GET_ORDER_BY_ID_REQUEST });
 
+  try {
     const { data } = await api.get(`/api/orders/${orderId}`);
     console.log("order by id ", data);
     dispatch({ type: GET_ORDER_BY_ID_SUCCESS, payload: data });
