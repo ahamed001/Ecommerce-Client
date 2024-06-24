@@ -7,6 +7,7 @@ import { mens_kurta } from "../../../Data/Mens_Kurta";
 import HomeSectionCard from "../HomeSectionCard/HomeSectionCard";
 import ProductReviewCard from "./ProductReviewCard";
 import { findProductsById } from "../../../State/Product/Action";
+import { addItemToCart } from "../../../State/Cart/Action";
 
 const product = {
   name: "Basic Tee 6-Pack",
@@ -71,6 +72,9 @@ export default function ProductDetails() {
 
   console.log("Params ", params.productId);
   const handleAddToCart = () => {
+    const data = { productId: params.productId, size: selectedSize.name }
+    console.log("data__ ", data);
+    dispatch(addItemToCart(data))
     navigate("/cart");
   };
 

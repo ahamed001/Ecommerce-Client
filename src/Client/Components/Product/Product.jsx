@@ -96,7 +96,7 @@ export default function Product() {
   const navigate = useNavigate();
   const param = useParams();
   const dispatch = useDispatch();
-  const { products } = useSelector(store => store);
+  const { products } = useSelector((store) => store);
 
   const decodedQueryString = decodeURIComponent(location.search);
   const searchParams = new URLSearchParams(decodedQueryString);
@@ -159,7 +159,7 @@ export default function Product() {
       minDiscount: discountValue || 0,
       sort: sortValue || "price_low",
       pageNumber: pageNumber - 1,
-      pageSize: 1,
+      pageSize: 6,
       stock: stockValue,
     };
     dispatch(findProducts(data));
@@ -175,7 +175,7 @@ export default function Product() {
     dispatch,
   ]);
 
-  console.log("productsCheck",products.products.content);
+  console.log("productsCheck", products.products.content);
 
   return (
     <div className="bg-white">

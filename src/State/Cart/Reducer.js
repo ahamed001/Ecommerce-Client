@@ -1,3 +1,4 @@
+import { updateCartItem } from "./Action";
 import {
   ADD_ITEM_TO_CART_FAILURE,
   ADD_ITEM_TO_CART_REQUEST,
@@ -46,12 +47,10 @@ export const cartReducer = (state = initialState, action) => {
       return { ...state, loading: true };
     
     case REMOVE_CART_ITEM_SUCCESS:
-      return { ...state, loading: false,
-        cartItems: state.cartItems.filter((item) => item.id !== action.payload) };
+      return { ...state, deleteCartItem: action.payload, loading: false };
     
     case UPDATE_CART_ITEM_SUCCESS:
-      return { ...state, loading: false,
-        cartItems: state.cartItems.map((item) => item.id === action.payload.id ? action.payload : item ) };
+      return { ...state, updateCartItem: action.payload, loading: false };
     
     case REMOVE_CART_ITEM_FAILURE:
     case UPDATE_CART_ITEM_FAILURE:
