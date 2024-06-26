@@ -9,6 +9,7 @@ import ProductDetails from "../Client/Components/ProductDetails/ProductDetails";
 import Checkout from "../Client/Components/Checkout/Checkout";
 import OrderDetails from "../Client/Components/Order/OrderDetails";
 import Order from "../Client/Components/Order/Order";
+import PaymentSucess from "../Client/Components/Payment/PaymentSucess";
 
 const ClientRoutes = () => {
   return (
@@ -17,15 +18,16 @@ const ClientRoutes = () => {
         <Navigation />
       </div>
       <Routes>
-        <Route path="/login" element={<HomePage />}></Route>
-        <Route path="/register" element={<HomePage />}></Route>
-        <Route path="/" element={<HomePage />}></Route>
-        <Route path="/cart" element={<Cart />}></Route>
-        <Route path="/:levelOne/:levelTwo/:levelThree" element={<Product />}></Route>
-        <Route path="/product/:productId" element={<ProductDetails />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
-        <Route path="/account/orders" element={<Order />}></Route>
-        <Route path="/account/orders/:orderId" element={<OrderDetails />}></Route>
+        <Route path = "/login"                           element = {<HomePage />}>       </Route>
+        <Route path = "/register"                        element = {<HomePage />}>       </Route>       
+        <Route path = "/"                                element = {<HomePage />}>       </Route>
+        <Route path = "/cart"                            element = {<Cart />}>           </Route>
+        <Route path = "/:levelOne/:levelTwo/:levelThree" element = {<Product />}>        </Route>
+        <Route path = "/product/:productId"              element = {<ProductDetails />}> </Route>
+        <Route path = "/checkout"                        element = {<Checkout />}>       </Route>
+        <Route path = "/account/orders"                  element = {<Order />}>          </Route>
+        <Route path = "/account/orders/:orderId"         element = {<OrderDetails />}>   </Route>
+        <Route path = "/payment/:orderId"                element = {<PaymentSucess />}>  </Route>
       </Routes>
       <div>
         <Footer />
