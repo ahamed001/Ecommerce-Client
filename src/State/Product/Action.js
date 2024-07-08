@@ -1,5 +1,11 @@
-import { api } from "../../Config/ApiConfig";
+import { api, API_BASE_URL } from "../../Config/ApiConfig";
 import {
+  CREATE_PRODUCT_FAILURE,
+  CREATE_PRODUCT_REQUEST,
+  CREATE_PRODUCT_SUCCESS,
+  DELETE_PRODUCT_FAILURE,
+  DELETE_PRODUCT_REQUEST,
+  DELETE_PRODUCT_SUCCESS,
   FIND_PRODUCTS_FAILURE,
   FIND_PRODUCTS_REQUEST,
   FIND_PRODUCTS_SUCCESS,
@@ -49,3 +55,25 @@ export const findProductsById = (reqData) => async (dispatch) => {
     dispatch({ type: FIND_PRODUCT_BY_ID_FAILURE, payload: error.message });
   }
 };
+
+export const createProduct = (product) => async (dispatch) => {
+  try {
+    dispatch({ type: CREATE_PRODUCT_REQUEST })
+    const { data } = await api.post(`${API_BASE_URL}/api/admin/products`, product.data);
+
+    dispatch({type:CREATE_PRODUCT_SUCCESS, payload:data})
+  } catch (error) {
+    dispatch({type:CREATE_PRODUCT_FAILURE, payload:error.message})
+  }  
+}
+
+export const deleteProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch({ type: DELETE_PRODUCT_REQUEST })
+    const { data } = await api.delete(`${API_BASE_URL}/api/admin/products/${productId}/delete`);
+
+    dispatch({type:DELETE_PRODUCT_SUCCESS, payload:productId})
+  } catch (error) {
+    dispatch({type:DELETE_PRODUCT_FAILURE, payload:error.message})
+  }  
+}
