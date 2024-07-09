@@ -27,7 +27,11 @@ const menu = [
   { name: "Products", path: "/admin/products", icon: <DashboardIcon /> },
   { name: "Customers", path: "/admin/customers", icon: <DashboardIcon /> },
   { name: "Orders", path: "/admin/orders", icon: <DashboardIcon /> },
-  { name: "Add Product", path: "/admin/product/create", icon: <DashboardIcon /> },
+  {
+    name: "Add Product",
+    path: "/admin/product/create",
+    icon: <DashboardIcon />,
+  },
 ];
 
 const Admin = () => {
@@ -78,19 +82,19 @@ const Admin = () => {
   );
 
   return (
-    <div>
-      <div className="flex h-[100vh]">
-        <CssBaseline />
-        <div className="w-[15%] h-full border border-r-gray-300">{drawer}</div>
-        <div className="w-[85%]">
-          <Routes>
-            <Route path="/" element={<AdminDashboard />}></Route>
-            <Route path="/product/create" element={<CreateProductForm />}></Route>
-            <Route path="/products" element={<ProductsTable />}></Route>
-            <Route path="/orders" element={<OrdersTable />}></Route>
-            <Route path="/customers" element={<CustomerTable />}></Route>
-          </Routes>
-        </div>
+    <div className="flex h-[100vh]">
+      <CssBaseline />
+      <div className="w-[15%] h-full border border-r-gray-300 fixed top-0">
+        {drawer}
+      </div>
+      <div className="w-[85%] h-full ml-[16%]">
+        <Routes>
+          <Route path="/" element={<AdminDashboard />}></Route>
+          <Route path="/product/create" element={<CreateProductForm />}></Route>
+          <Route path="/products" element={<ProductsTable />}></Route>
+          <Route path="/orders" element={<OrdersTable />}></Route>
+          <Route path="/customers" element={<CustomerTable />}></Route>
+        </Routes>
       </div>
     </div>
   );

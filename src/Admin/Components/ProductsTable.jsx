@@ -39,7 +39,7 @@ const ProductsTable = () => {
       stock: "",
     };
     dispatch(findProducts(data));
-  }, [dispatch, products.deleteProduct]);
+  }, [dispatch, products.deletedProduct]);
 
   return (
     <div className="p-5">
