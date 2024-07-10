@@ -31,10 +31,13 @@ export const adminOrderReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ORDERS_REQUEST:
       return { ...state, loading: true };
+
     case GET_ORDERS_SUCCESS:
       return { loading: false, orders: action.payload, error: "" };
+
     case GET_ORDERS_FAILURE:
       return { loading: false, orders: [], error: action.payload };
+
     case CONFIRMED_ORDER_REQUEST:
     case PLACED_ORDER_REQUEST:
     case DELIVERED_ORDER_REQUEST:

@@ -60,27 +60,28 @@ export const shipOrder = (orderId) => {
 };
 
 export const deliveredOrder = (orderId) => async (dispatch) => {
-    dispatch({ type: DELIVERED_ORDER_REQUEST });
-  
-    try {
-      const response = await api.put(`/api/admin/orders/${orderId}/deliver`);
-      const data = response.data;
-      console.log("delivered order ", response.data);
-      dispatch({ type: DELIVERED_ORDER_SUCCESS, payload: data });
-    } catch (error) {
-      dispatch({ type: DELIVERED_ORDER_FAILURE, payload: error.message });
-    }
+  dispatch({ type: DELIVERED_ORDER_REQUEST });
+
+  try {
+    const response = await api.put(`/api/admin/orders/${orderId}/deliver`);
+    const data = response.data;
+    console.log("delivered order ", response.data);
+    dispatch({ type: DELIVERED_ORDER_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({ type: DELIVERED_ORDER_FAILURE, payload: error.message });
+  }
 };
-  
+
 export const deleteOrder = (orderId) => {
-    return async (dispatch) => {
-        dispatch({ type: DELETE_ORDER_REQUEST });
-      try {
-        const { data } = await api.put(`/api/admin/orders/${orderId}/delete`);
-        console.log("delete order ", data);
-        dispatch({ type: DELETE_ORDER_SUCCESS, payload: data });
-      } catch (error) {
-        dispatch({ type: DELETE_ORDER_FAILURE, payload: error.message });
-      }
-    };
+  return async (dispatch) => {
+    dispatch({ type: DELETE_ORDER_REQUEST });
+
+    try {
+      const { data } = await api.put(`/api/admin/orders/${orderId}/delete`);
+      console.log("delete order ", data);
+      dispatch({ type: DELETE_ORDER_SUCCESS, payload: data });
+    } catch (error) {
+      dispatch({ type: DELETE_ORDER_FAILURE, payload: error.message });
+    }
   };
+};
