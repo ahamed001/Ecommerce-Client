@@ -17,13 +17,13 @@ import {
   SHIP_ORDER_SUCCESS,
 } from "./ActionType";
 
-export const getOrder = () => {
+export const getOrders = () => {
   console.log("get all orders ");
   return async (dispatch) => {
     dispatch({ type: GET_ORDERS_REQUEST });
 
     try {
-      const response = await api.get(`/api/admin/orders`);
+      const response = await api.get(`/api/admin/orders/`);
       console.log("get all orders ", response.data);
       dispatch({ type: GET_ORDERS_SUCCESS, payload: response.data });
     } catch (error) {
