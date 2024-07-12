@@ -1,12 +1,3 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  confirmOrder,
-  deleteOrder,
-  deliveredOrder,
-  getOrders,
-  shipOrder,
-} from "../../State/Admin/Order/Action";
 import {
   Avatar,
   AvatarGroup,
@@ -23,8 +14,16 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  confirmOrder,
+  deliveredOrder,
+  getOrders,
+  shipOrder
+} from "../../State/Admin/Order/Action";
 
-const OrdersTable = () => {
+const OrdersTableView = () => {
   const [anchorEl, setAnchorEl] = React.useState([]);
   const open = Boolean(anchorEl);
 
@@ -69,15 +68,10 @@ const OrdersTable = () => {
     handleClose();
   };
 
-  const handleDeleteOrder = (orderId) => {
-    dispatch(deleteOrder(orderId));
-    handleClose();
-  };
-
   return (
     <div className="p-10">
       <Card className="mt-2">
-        <CardHeader title="All Products" />
+        <CardHeader title="Recent Orders" />
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead>
@@ -88,7 +82,6 @@ const OrdersTable = () => {
                 <TableCell align="left">Price</TableCell>
                 <TableCell align="left">Status</TableCell>
                 <TableCell align="left">Update</TableCell>
-                <TableCell align="left">Delete</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -161,14 +154,6 @@ const OrdersTable = () => {
                       </MenuItem>
                     </Menu>
                   </TableCell>
-                  <TableCell align="left">
-                    <Button
-                      onClick={() => handleDeleteOrder(item.id)}
-                      variant="outlined"
-                    >
-                      Delete
-                    </Button>
-                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -179,4 +164,4 @@ const OrdersTable = () => {
   );
 };
 
-export default OrdersTable;
+export default OrdersTableView;

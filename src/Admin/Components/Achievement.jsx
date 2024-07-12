@@ -18,7 +18,7 @@ const Achievement = () => {
   })
 
   return (
-    <Card sx={{position:'relative', bgcolor:"#242B2E", color:"white"}}>
+    <Card sx={{position:'relative'}}>
       <CardContent>
         <Typography variant='h6' sx={{letterSpacing:".25px"}}>Dsimilar</Typography>
         <Typography variant='body2'>Congratulations</Typography>

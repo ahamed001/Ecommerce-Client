@@ -6,26 +6,22 @@ import {
   ListItemButton,
   ListItemIcon,
   ListItemText,
-  // Toolbar,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-// import { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-// import EmailIcon from "@mui/icons-material/Email";
-// import InboxIcon from "@mui/icons-material/Inbox";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CreateProductForm from "./Components/CreateProductForm";
 import ProductsTable from "./Components/ProductsTable";
 import OrdersTable from "./Components/OrdersTable";
-import CustomerTable from "./Components/CustomerTable";
+// import CustomerTable from "./Components/CustomerTable";
 import AdminDashboard from "./Components/AdminDashboard";
 
 const menu = [
   { name: "Dashboard", path: "/admin", icon: <DashboardIcon /> },
   { name: "Products", path: "/admin/products", icon: <DashboardIcon /> },
-  { name: "Customers", path: "/admin/customers", icon: <DashboardIcon /> },
+  // { name: "Customers", path: "/admin/customers", icon: <DashboardIcon /> },
   { name: "Orders", path: "/admin/orders", icon: <DashboardIcon /> },
   {
     name: "Add Product",
@@ -37,7 +33,6 @@ const menu = [
 const Admin = () => {
   const theme = useTheme();
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
-  // const [sideBarVisible, setSideBarVisible] = useState(false);
   const navigate = useNavigate();
 
   const drawer = (
@@ -51,7 +46,6 @@ const Admin = () => {
       }}
     >
       <>
-        {/* {isLargeScreen && <Toolbar />} */}
         <List>
           {menu.map((item) => (
             <ListItem
@@ -84,7 +78,7 @@ const Admin = () => {
   return (
     <div className="flex h-[100vh]">
       <CssBaseline />
-      <div className="w-[15%] h-full border border-r-gray-300 fixed top-0">
+      <div className="shadow-lg shadow-gray-600 w-[15%] h-full fixed top-0">
         {drawer}
       </div>
       <div className="w-[85%] h-full ml-[16%]">
@@ -93,7 +87,7 @@ const Admin = () => {
           <Route path="/product/create" element={<CreateProductForm />}></Route>
           <Route path="/products" element={<ProductsTable />}></Route>
           <Route path="/orders" element={<OrdersTable />}></Route>
-          <Route path="/customers" element={<CustomerTable />}></Route>
+          {/* <Route path="/customers" element={<CustomerTable />}></Route> */}
         </Routes>
       </div>
     </div>
